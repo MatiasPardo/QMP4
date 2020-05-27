@@ -4,15 +4,21 @@ Cuarta iteracion de QMP
 public class Prenda{
 	
 }
+
 public class Atuend{
+
 	private List<Prenda> prendas;
 }
+
 pulic class Sugerencia{
 	
 }
+
 public interface Clima{
+
 	public int getClima(String ciudad);
 }
+
 public class AccuWeatherApi implements Clima{
 
 	private static List<Map<String, Object>> LISTACLIMASPORCIUDAD;
@@ -31,6 +37,7 @@ public class AccuWeatherApi implements Clima{
 		}else return LISTACLIMASPORCIUDAD;
 	}	
 }
+
 public class Sugerencia{
 	
 }
