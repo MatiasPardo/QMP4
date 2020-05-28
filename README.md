@@ -3,14 +3,26 @@ Cuarta iteracion de QMP
 
 public class Prenda{
 	
+	private int temperaturaMaximaDeUso; //dato que tiene la prenda al crearla. 
+	
+	private List<Temporada> temperadasAcordes(){
+		List<Temporada> temporadas = new LinkedList<Temporada>();
+		if(Temporada.PRIMAVERA(temperaturaMaximaDeUso)){ temporadas.add(Temporada.PRIMAVERA);}
+		if(Temporada.VERANO(temperaturaMaximaDeUso)){ temporadas.add(Temporada.VERANO);}
+		if(Temporada.OTONIO(temperaturaMaximaDeUso)){ temporadas.add(Temporada.OTONIO);}
+		if(Temporada.INVIERNO(temperaturaMaximaDeUso)){ temporadas.add(Temporada.INVIERNO);}
+		return temporadas;
+	}
+	
 }
 
-public class Atuend{
+public class atuend{
 
 	private List<Prenda> prendas;
 }
 
 pulic class Sugerencia{
+	
 	
 }
 
@@ -45,5 +57,26 @@ public class AccuWeatherApi implements Clima{
 }
 
 public class Sugerencia{
+	
+}
+
+public enum Temporada{
+	PRIMAVERA{
+	public boolean esTemporada(int temperatura){
+		return between(temperatura, 15, 25)
+	}
+	}, VERANO{
+	public boolean esTemporada(int temperatura){
+		return between(temperatura, 20, 40)
+	}
+	}, OTOÑO{
+	public boolean esTemporada(int temperatura){
+		return between(temperatura, 5, 15)
+	}
+	}, INVIERNO{
+	public boolean esTemporada(int temperatura){
+		return between(temperatura, -10, 10)
+	}
+	}
 	
 }
