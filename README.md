@@ -7,10 +7,14 @@ public class Prenda{
 	
 	private List<Temporada> temperadasAcordes(){
 		List<Temporada> temporadas = new LinkedList<Temporada>();
-		if(Temporada.PRIMAVERA(temperaturaMaximaDeUso)){ temporadas.add(Temporada.PRIMAVERA);}
-		if(Temporada.VERANO(temperaturaMaximaDeUso)){ temporadas.add(Temporada.VERANO);}
-		if(Temporada.OTONIO(temperaturaMaximaDeUso)){ temporadas.add(Temporada.OTONIO);}
-		if(Temporada.INVIERNO(temperaturaMaximaDeUso)){ temporadas.add(Temporada.INVIERNO);}
+		if(Temporada.PRIMAVERA(temperaturaMaximaDeUso)){
+			temporadas.add(Temporada.PRIMAVERA);}
+		if(Temporada.VERANO(temperaturaMaximaDeUso)){ 
+			temporadas.add(Temporada.VERANO);}
+		if(Temporada.OTONIO(temperaturaMaximaDeUso)){ 
+			temporadas.add(Temporada.OTONIO);}
+		if(Temporada.INVIERNO(temperaturaMaximaDeUso)){ 
+			temporadas.add(Temporada.INVIERNO);}
 		return temporadas;
 	}
 	
