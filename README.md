@@ -65,6 +65,7 @@ public class Sugerencia{
 }
 
 public enum Temporada{
+
 	PRIMAVERA{
 	public boolean esTemporada(int temperatura){
 		return between(temperatura, 15, 25)
