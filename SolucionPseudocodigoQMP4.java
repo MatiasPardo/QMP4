@@ -28,6 +28,10 @@ public class Prenda{
 public class atuendo{
 
 	private List<Prenda> prendas;
+	
+	public add(Prenda prenda){
+		this.prendas.add(prenda);
+	}
 }
 
 
