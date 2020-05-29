@@ -125,21 +125,21 @@ public class Guardarropa implements GeneradorSugerencias{
 public enum Temporada{
 
 	PRIMAVERA{
-	public boolean aplica(int temperatura){
-		return between(temperatura, 15, 25)
-	}
+		public boolean aplica(int temperatura){
+			return between(temperatura, 15, 25)
+		}
 	}, VERANO{
-	public boolean aplica(int temperatura){
-		return between(temperatura, 20, 40)
-	}
+		public boolean aplica(int temperatura){
+			return between(temperatura, 20, 40)
+		}
 	}, OTOÑO{
-	public boolean aplica(int temperatura){
-		return between(temperatura, 5, 15)
-	}
+		public boolean aplica(int temperatura){
+			return between(temperatura, 5, 15)
+		}
 	}, INVIERNO{
-	public boolean aplica(int temperatura){
-		return between(temperatura, -10, 10)
-	}
+		public boolean aplica(int temperatura){
+			return between(temperatura, -10, 10)
+		}
 	}
 	public List<Temporadas> todas(){
 		List<Categorias> temporadas = new LinkedList<Categorias>();
@@ -154,6 +154,7 @@ public enum Temporada{
 }
 
 public enum Categorias{
+
 	SUPERIOR, INFERIOR, CALZADO, ACCESORIOS;
 	
 	public List<Categorias> todas(){
