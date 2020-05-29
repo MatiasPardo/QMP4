@@ -19,7 +19,7 @@ public class Prenda{
 	}
 
 	public boolean esApta(int temperatura){
-		return !this.temporadasAcordes().stream.filter(t-> t.aplica(temperatura)).isEmpty()
+		return !this.temporadasAcordes().stream.filter(t-> t.aplica(temperatura)).isEmpty();
 	}
 }
 
