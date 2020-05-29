@@ -3,21 +3,21 @@ Cuarta iteracion de QMP
 
 public class Prenda{
 	
+	private Categoria tipoPrenda;
+	
 	private int temperaturaMaximaDeUso; //dato que tiene la prenda al crearla. 
-/*	
+	
 	private List<Temporada> temperadasAcordes(){
-		List<Temporada> temporadas = new LinkedList<Temporada>();
-		if(Temporada.PRIMAVERA.aplica(temperaturaMaximaDeUso)){
-			temporadas.add(Temporada.PRIMAVERA);}
-		if(Temporada.VERANO.aplica(temperaturaMaximaDeUso)){ 
-			temporadas.add(Temporada.VERANO);}
-		if(Temporada.OTONIO.aplica(temperaturaMaximaDeUso)){ 
-			temporadas.add(Temporada.OTONIO);}
-		if(Temporada.INVIERNO.aplica(temperaturaMaximaDeUso)){ 
-			temporadas.add(Temporada.INVIERNO);}
-		return temporadas;
+		List<Temporada> temporadasAptas = new List<Temporada>();
+		for(Temporadas temporada: Temporadas.todas()){
+			if(temporada.aplica(temperaturaMaximaDeUso)){
+			temporadasAptas.add(temporada);
+			}
+		}
+		return temporadasAptas;
+
 	}
-*/	
+	
 	public boolean esApta(int temperatura){
 		return !this.temporadasAcordes().stream.filter(t-> t.aplica(temperatura)).isEmpty()
 	}
@@ -32,6 +32,7 @@ public class atuendo{
 public interface Clima{
 
 	public Map<String, Object> getClima(String ciudad);
+	
 }
 
 public class AccuWeatherApi implements Clima{
@@ -76,13 +77,48 @@ public class Guardarropa implements GeneradorSugerencias{
 	private List<Atuendo> atuendos;
 
 	public List<Atuendo> generarSugerenciaDesde(List<Prenda> prendasAptas){
-	
+		Map<Categoria,List<Prenda>> prendasPorCategoria = new HashMap<<Categoria,List<Prenda>>;
+		this.inicializarMapPrendas(prendasPorCategoria);
+		for(Prenda prenda: prendasAptas){
+			pendasPorCategoria.get(prenda.getTipoPrenda()).add(prenda);
+		}
+		return this.armarAtuendos(prendasPorCategoria);
 	}
 	
 	public List<Prendas> filtrarPrendasAptas(List<Prenda> prendas){
-		
+		return prendas.stream.filter(p -> p.esApta(AccuWeatherApi.temperatura(this.ciudad));
 	}
 	
+	public void inicializarMapPrendas(prendasPorCategoria){
+		prendasPorCageroria.put(Categoria.SUPERIOR,new List<Prendas>);
+		prendasPorCageroria.put(Categoria.INFERIOR,new List<Prendas>);
+		prendasPorCageroria.put(Categoria.CALZADO,new List<Prendas>);
+		prendasPorCageroria.put(Categoria.ACCESORIOS,new List<Prendas>);
+	}
+	
+	public List<Atuendo> armarAtuendos(Map<Categoria,List<Prenda>) prendasAgrupadas){
+		List<Atuendo> atuendosPosibles = new LinkedList<Atuendo>();
+		try{
+			atuendosPosibles.add(this.unAtuendo(prendasAgrupadas);
+		}catch(Exception e){
+			//NO HAGO NADA, O AVISO QUE NO SE PUEDEN GENERAR MAS PRENDAS. 
+		}
+		return atuendosPosibles;
+	}
+	
+	public Atuendo unAtuendo(Map<Categoria,List<Prenda> prendasAgrupadas){
+		Atuendo atuendo = new Atuendo();
+		Prenda prenda = new Prenda();
+		for(Categoria cat: Categoria.todas()){
+			List<Prenda> prendasUtilizadas = prendasAgrupadas.get(cat);
+			if(!prendasUtilizadas.isEmpty()){
+				prenda = prendasUtilizadas.stream.findFirst();
+				atuendo.set(prenda);
+				prendasUtilizadas.remove(prenda);
+				prendasAgrupadas.put(cat,prendasUtilizadas);
+			}else throw new Exception();
+		}
+		return prenda;		
 }
 
 
@@ -105,5 +141,27 @@ public enum Temporada{
 		return between(temperatura, -10, 10)
 	}
 	}
+	public List<Temporadas> todas(){
+		List<Categorias> temporadas = new LinkedList<Categorias>();
+	 	temporadas.add(PRIMAVERA);
+		temporadas.add(VERANO);
+		temporadas.add(OTONIO);
+		temporadas.add(INVIERNO);
+		retunr temporadas;
+		
 	
+	
+}
+
+public enum Categorias{
+	SUPERIOR, INFERIOR, CALZADO, ACCESORIOS;
+	
+	public List<Categorias> todas(){
+		List<Categorias> categorias = new LinkedList<Categorias>();
+	 	categorias.add(SUPERIOR);
+		categorias.add(INFERIOR);
+		categorias.add(CALZADO);
+		categorias.add(ACCESORIOS);
+		retunr categorias;
+		
 }
