@@ -53,10 +53,10 @@ public class AccuWeatherApi implements Clima{
 		}else return CLIMA;
 	}	
 	public static float probabilidadLluvia(String ciudad){
-		return this.getClima(ciudad).get("PrecipitationProbability");
+		return this.getClima(ciudad).get("PrecipitationProbability").get(value);
 	}
 	public static float temperatura(String ciudad){
-		return this.getClima(ciudad).get("Temperature");
+		return this.getClima(ciudad).get("Temperature"); //falta castearlo a celcius:  restarle 32 * 5/9
 	}
 }
 
