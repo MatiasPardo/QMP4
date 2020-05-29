@@ -4,31 +4,30 @@ Cuarta iteracion de QMP
 public class Prenda{
 	
 	private int temperaturaMaximaDeUso; //dato que tiene la prenda al crearla. 
-	
+/*	
 	private List<Temporada> temperadasAcordes(){
 		List<Temporada> temporadas = new LinkedList<Temporada>();
-		if(Temporada.PRIMAVERA(temperaturaMaximaDeUso)){
+		if(Temporada.PRIMAVERA.aplica(temperaturaMaximaDeUso)){
 			temporadas.add(Temporada.PRIMAVERA);}
-		if(Temporada.VERANO(temperaturaMaximaDeUso)){ 
+		if(Temporada.VERANO.aplica(temperaturaMaximaDeUso)){ 
 			temporadas.add(Temporada.VERANO);}
-		if(Temporada.OTONIO(temperaturaMaximaDeUso)){ 
+		if(Temporada.OTONIO.aplica(temperaturaMaximaDeUso)){ 
 			temporadas.add(Temporada.OTONIO);}
-		if(Temporada.INVIERNO(temperaturaMaximaDeUso)){ 
+		if(Temporada.INVIERNO.aplica(temperaturaMaximaDeUso)){ 
 			temporadas.add(Temporada.INVIERNO);}
 		return temporadas;
 	}
-	
+*/	
+	public boolean esApta(int temperatura){
+		return !this.temporadasAcordes().stream.filter(t-> t.aplica(temperatura)).isEmpty()
+	}
 }
 
-public class atuend{
+public class atuendo{
 
 	private List<Prenda> prendas;
 }
 
-pulic class Sugerencia{
-	
-	
-}
 
 public interface Clima{
 
@@ -52,34 +51,57 @@ public class AccuWeatherApi implements Clima{
 			return condicionesClimaticas.get(0);
 		}else return CLIMA;
 	}	
-	public float probabilidadLluvia(String ciudad){
+	public static float probabilidadLluvia(String ciudad){
 		return this.getClima(ciudad).get("PrecipitationProbability");
 	}
-	public float temperatura(String ciudad){
+	public static float temperatura(String ciudad){
 		return this.getClima(ciudad).get("Temperature");
 	}
 }
 
-public class Sugerencia{
+public Interface GeneradorSugerencias {
+
+	public List<Atuendo> generarSugerenciaDesde(List<Prenda> prendasAptas){
+	}
+	
+	public List<Prendas> filtrarPrendasAptas(List<Prenda> prendas){
+	}
 	
 }
+
+public class Guardarropa implements GeneradorSugerencias{
+
+	private String ciudad;
+	
+	private List<Atuendo> atuendos;
+
+	public List<Atuendo> generarSugerenciaDesde(List<Prenda> prendasAptas){
+	
+	}
+	
+	public List<Prendas> filtrarPrendasAptas(List<Prenda> prendas){
+		
+	}
+	
+}
+
 
 public enum Temporada{
 
 	PRIMAVERA{
-	public boolean esTemporada(int temperatura){
+	public boolean aplica(int temperatura){
 		return between(temperatura, 15, 25)
 	}
 	}, VERANO{
-	public boolean esTemporada(int temperatura){
+	public boolean aplica(int temperatura){
 		return between(temperatura, 20, 40)
 	}
 	}, OTOÑO{
-	public boolean esTemporada(int temperatura){
+	public boolean aplica(int temperatura){
 		return between(temperatura, 5, 15)
 	}
 	}, INVIERNO{
-	public boolean esTemporada(int temperatura){
+	public boolean aplica(int temperatura){
 		return between(temperatura, -10, 10)
 	}
 	}
