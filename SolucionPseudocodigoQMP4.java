@@ -49,6 +49,7 @@ public class AccuWeatherApi implements Clima{
 
 	private static date FECHAULTIMOLLAMADO
 
+	@Override
 	public Map<String, Object> getClima(String ciudad){
 		Date llamando = new Date();
 		int unaHoraAntesAlLlamado = llamado.getHours()-1; 
@@ -81,8 +82,7 @@ public class Guardarropa implements GeneradorSugerencias{
 
 	private String ciudad;
 
-	private List<Atuendo> atuendos;
-
+	@Override
 	public List<Atuendo> generarSugerenciaDesde(List<Prenda> prendasAptas){
 		Map<Categoria,List<Prenda>> prendasPorCategoria = new HashMap<<Categoria,List<Prenda>>;
 		this.inicializarMapPrendas(prendasPorCategoria);
@@ -91,11 +91,12 @@ public class Guardarropa implements GeneradorSugerencias{
 		}
 		return this.armarAtuendos(prendasPorCategoria);
 	}
-
+	
+	@Override
 	public List<Prendas> filtrarPrendasAptas(List<Prenda> prendas){
 		return prendas.stream.filter(p -> p.esApta(AccuWeatherApi.temperatura(this.ciudad));
 	}
-
+	
 	private void inicializarMapPrendas(prendasPorCategoria){
 		prendasPorCageroria.put(Categoria.SUPERIOR,new List<Prendas>);
 		prendasPorCageroria.put(Categoria.INFERIOR,new List<Prendas>);
